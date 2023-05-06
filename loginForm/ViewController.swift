@@ -15,13 +15,43 @@ class ViewController: UIViewController {
     @IBOutlet weak var loginLabel: UILabel!
     @IBOutlet weak var ContinueButton: UIButton!
     
+    private let signoutButton:UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .green
+        button.setTitleColor(.white, for: .normal)
+        button.setTitle("signOut", for: .normal)
+        return button
+    }()
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
+        if FirebaseAuth.Auth.auth().currentUser != nil {
+            EmailField.isHidden = true
+            PasswordField.isHidden = true
+            loginLabel.isHidden = true
+            ContinueButton.isHidden = true
+            view.addSubview(signoutButton)
+            signoutButton.addTarget(self, action: #selector(signoutfunc) , for: .touchUpInside)
+            signoutButton.frame = CGRect(x: 20, y: 150, width: view.frame.size.width-40, height: 52)
+
+        }
     }
     
+    @objc private func signoutfunc(){
+        do{
+            try FirebaseAuth.Auth.auth().signOut()
+            EmailField.isHidden = false
+            PasswordField.isHidden = false
+            loginLabel.isHidden = false
+            ContinueButton.isHidden = false
+            signoutButton.removeFromSuperview()
+        }
+        catch{
+            print("an error occuered")
+        }
+    }
     
     @IBAction func ContinueAction(_ sender: Any) {
         guard let email = EmailField.text, !email.isEmpty,
@@ -29,11 +59,7 @@ class ViewController: UIViewController {
             print("Missing data")
             return
         }
-        // if it is not empty we will pass data to firebase and check it
-        // if there a failure present an alert
-        // if user continue creat accont
-        // check sign in on launch app
-        // allow user to signout with button
+ 
         
         FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password) { [weak self] result, error in
             
