@@ -9,23 +9,22 @@ import UIKit
 
 class SignUpController: UIViewController {
 
+    @IBOutlet weak var circle: UIView!
     
+    @IBOutlet weak var BigCircle: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        viewOrder.layer.borderColor = UIColor.systemYellow.cgColor
-        viewOrder.layer.borderWidth = 1
-        viewOrder.layer.cornerRadius = 40
-        viewOrder.layer.masksToBounds = true
-        viewOrder.layer.shadowOffset = CGSizeMake(6, 6)
-        viewOrder.layer.shadowColor = UIColor.white.cgColor
-        viewOrder.layer.shadowOpacity = 0.1
-        viewOrder.layer.shadowRadius = 4
+        border_of_shapes(size: 134, view: circle)
+        border_of_shapes(size: 154, view: BigCircle)
+
 
     }
     
 
-
-
+}
+ func border_of_shapes(size:Int,view:UIView){
+    view.layer.cornerRadius = CGFloat(size)
+    view.layer.shadowOffset = CGSizeMake(10,10)
 }
