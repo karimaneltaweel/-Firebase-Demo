@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		ACB3F3ED3AF826AFDF4F1383 /* Pods_loginForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B73F8EA872C042FF883C1844 /* Pods_loginForm.framework */; };
+		DD037C552A09AAA0005ABED5 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD037C542A09AAA0005ABED5 /* MainController.swift */; };
 		DDB9C2972A098BAA00DE1783 /* SignUpController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDB9C2962A098BAA00DE1783 /* SignUpController.swift */; };
 		DDF020292A0103E30024C2CA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF020282A0103E30024C2CA /* AppDelegate.swift */; };
 		DDF0202B2A0103E30024C2CA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDF0202A2A0103E30024C2CA /* SceneDelegate.swift */; };
@@ -22,6 +23,7 @@
 		B73F8EA872C042FF883C1844 /* Pods_loginForm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_loginForm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B822BC289C7780E2E8ADD1C7 /* Pods-loginForm.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loginForm.debug.xcconfig"; path = "Target Support Files/Pods-loginForm/Pods-loginForm.debug.xcconfig"; sourceTree = "<group>"; };
 		BF686144283AAB88FB19143F /* Pods-loginForm.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-loginForm.release.xcconfig"; path = "Target Support Files/Pods-loginForm/Pods-loginForm.release.xcconfig"; sourceTree = "<group>"; };
+		DD037C542A09AAA0005ABED5 /* MainController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainController.swift; sourceTree = "<group>"; };
 		DDB9C2962A098BAA00DE1783 /* SignUpController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpController.swift; sourceTree = "<group>"; };
 		DDF020252A0103E30024C2CA /* loginForm.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = loginForm.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDF020282A0103E30024C2CA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				DDF020332A0103E40024C2CA /* LaunchScreen.storyboard */,
 				DDF020362A0103E40024C2CA /* Info.plist */,
 				DDB9C2962A098BAA00DE1783 /* SignUpController.swift */,
+				DD037C542A09AAA0005ABED5 /* MainController.swift */,
 			);
 			path = loginForm;
 			sourceTree = "<group>";
@@ -217,6 +220,7 @@
 				DDF020292A0103E30024C2CA /* AppDelegate.swift in Sources */,
 				DDF0202B2A0103E30024C2CA /* SceneDelegate.swift in Sources */,
 				DDB9C2972A098BAA00DE1783 /* SignUpController.swift in Sources */,
+				DD037C552A09AAA0005ABED5 /* MainController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
