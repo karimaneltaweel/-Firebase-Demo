@@ -7,6 +7,10 @@
 
 import UIKit
 import Firebase
+import FirebaseCore
+import FirebaseAuth
+import GoogleSignIn
+
 
 class ViewController: UIViewController {
     
@@ -14,6 +18,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var EmailField: UITextField!
     @IBOutlet weak var loginLabel: UILabel!
     @IBOutlet weak var ContinueButton: UIButton!
+    @IBOutlet var signInButton:GIDSignInButton!
+    
     
     private let signoutButton:UIButton = {
         let button = UIButton()
@@ -24,8 +30,12 @@ class ViewController: UIViewController {
     }()
     
     
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        signInButton.addTarget(self, action: #selector(googleSign) , for: .touchUpInside)
+
 
         if FirebaseAuth.Auth.auth().currentUser != nil {
             EmailField.isHidden = true
@@ -109,5 +119,47 @@ class ViewController: UIViewController {
         
     }
     
+    
+@objc private func googleSign(){
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+
+        // Create Google Sign In configuration object.
+        let config = GIDConfiguration(clientID: clientID)
+        GIDSignIn.sharedInstance.configuration = config
+
+        // Start the sign in flow!
+        GIDSignIn.sharedInstance.signIn(withPresenting: self) { [unowned self] result, error in
+          guard error == nil else {
+              return
+            // ...
+          }
+
+          guard let user = result?.user,
+            let idToken = user.idToken?.tokenString
+          else {
+              return
+            // ...
+          }
+
+          let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                         accessToken: user.accessToken.tokenString)
+            
+            Auth.auth().signIn(with: credential) { result, error in
+
+                self.EmailField.isHidden = true
+                self.PasswordField.isHidden = true
+                self.loginLabel.isHidden = true
+                self.ContinueButton.isHidden = true
+                self.view.addSubview(self.signoutButton)
+                self.signoutButton.addTarget(self, action: #selector(self.signoutfunc) , for: .touchUpInside)
+                self.signoutButton.frame = CGRect(x: 20, y: 150, width: view.frame.size.width-40, height: 52)            }
+        }
+        
+       
+    }
+    
+    
 }
+
+
 
