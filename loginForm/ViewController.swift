@@ -18,8 +18,11 @@ class ViewController: UIViewController {
     @IBOutlet weak var EmailField: UITextField!
     @IBOutlet weak var loginLabel: UILabel!
     @IBOutlet weak var ContinueButton: UIButton!
-    @IBOutlet var signInButton:GIDSignInButton!
+    @IBOutlet weak var greenCircle: UIView!
+    @IBOutlet weak var OrangeCicle: UIView!
     
+    
+    @IBOutlet weak var GoogleSignIn: UIButton!
     
     private let signoutButton:UIButton = {
         let button = UIButton()
@@ -34,7 +37,11 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        signInButton.addTarget(self, action: #selector(googleSign) , for: .touchUpInside)
+        
+        border_of_shapes(size: 200, view: OrangeCicle)
+        border_of_shapes(size: 200, view: greenCircle)
+        GoogleSignIn.addTarget(self, action: #selector(googleSign) , for: .touchUpInside)
+
 
 
         if FirebaseAuth.Auth.auth().currentUser != nil {
@@ -152,7 +159,7 @@ class ViewController: UIViewController {
                 self.ContinueButton.isHidden = true
                 self.view.addSubview(self.signoutButton)
                 self.signoutButton.addTarget(self, action: #selector(self.signoutfunc) , for: .touchUpInside)
-                self.signoutButton.frame = CGRect(x: 20, y: 150, width: view.frame.size.width-40, height: 52)            }
+                self.signoutButton.frame = CGRect(x: 20, y: 195, width: view.frame.size.width-40, height: 52)            }
         }
         
        
@@ -160,6 +167,7 @@ class ViewController: UIViewController {
     
     
 }
+
 
 
 
